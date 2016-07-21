@@ -14,11 +14,11 @@ const getRoute = (routeId) => {
     }
 }
 
-const goBack = (n) => {
-    n.pop();
-}
-
 const renderScene = (route, navigator) => {
+    const goBack = () => {
+        navigator.pop();
+    }
+
     if (route.id === 'LANDING') {
         return (
             <LandingContainer
@@ -33,20 +33,12 @@ const renderScene = (route, navigator) => {
     }
     if (route.id === 'LOGIN') {
         return (
-            <LoginView
-                onBack={() => {
-                    navigator.pop()
-                }}
-            />
+            <LoginView onBack={goBack} />
         );
     }
     if (route.id === 'SIGNUP') {
         return (
-            <SignupView
-                onBack={() => {
-                    navigator.pop()
-                }}
-            />
+            <SignupView onBack={goBack} />
         );
     }
 }
